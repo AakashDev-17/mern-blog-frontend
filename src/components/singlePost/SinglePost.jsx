@@ -15,9 +15,11 @@ const SinglePost = () => {
    const [updateMode, setUpdateMode] = useState(false);
    const PF = PIC_URL;
    let username = "";
-   if (localStorage.getItem("user") && JSON.parse(localStorage.getItem("user")).user) {
-      username = JSON.parse(localStorage.getItem("user")).user.username;
-   }
+   try {
+      if (localStorage.getItem("user")!==null && JSON.parse(localStorage.getItem("user")).user) {
+         username = JSON.parse(localStorage.getItem("user")).user.username;
+      }
+   } catch(err) {}
 
    const handleDelete = async () => {
       try {
